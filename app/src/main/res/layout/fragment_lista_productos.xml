@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".productos.ListaProductosFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:elevation="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:id="@+id/tv_titulo_tienda"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tienda Virtual"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_carrito"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:clickable="true"
+            android:contentDescription="Carrito de compras"
+            android:focusable="true"
+            android:padding="4dp"
+            android:src="@drawable/ic_shopping_cart" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="17dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="Buscar"
+                    android:src="@drawable/ic_search" />
+
+                <EditText
+                    android:id="@+id/et_buscar_productos"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Buscar productos"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/btn_anadir_nuevo_producto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Añadir nuevo producto"
+            android:layout_marginBottom="16dp"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_productos"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:listitem="@layout/item_productos"/>
+
+    </LinearLayout>
+
+</LinearLayout>

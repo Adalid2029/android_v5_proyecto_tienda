@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.version5.tiendavirtual.autentificacion.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_lista_productos"
+            app:destination="@+id/listaProductosFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/listaProductosFragment"
+        android:name="com.version5.tiendavirtual.productos.ListaProductosFragment"
+        android:label="Lista de Productos"
+        tools:layout="@layout/fragment_lista_productos">
+    </fragment>
+
+</navigation>
