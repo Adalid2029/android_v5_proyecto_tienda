@@ -19,6 +19,24 @@
         android:name="com.version5.tiendavirtual.productos.ListaProductosFragment"
         android:label="Lista de Productos"
         tools:layout="@layout/fragment_lista_productos">
+        <action android:id="@+id/action_lista_productos_to_anadir_producto"
+            app:destination="@+id/anadirProductoFragment"/>
     </fragment>
 
+    <fragment
+        android:id="@+id/anadirProductoFragment"
+        android:name="com.version5.tiendavirtual.productos.AnadirProductoFragment"
+        android:label="Añadir Producto"
+        tools:layout="@layout/fragment_anadir_producto"/>
+
+    <fragment
+        android:id="@+id/nav_carrito"
+        android:name="com.version5.tiendavirtual.carrito.CarritoFragment"
+        android:label="Carrito"
+        tools:layout="@layout/fragment_carrito"/>
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.version5.tiendavirtual.perfil.PerfilFragment"
+        android:label="Perfil"
+        tools:layout="@layout/fragment_perfil"/>
 </navigation>

@@ -36,6 +36,7 @@
             android:hint="Ingrese nombre de usuario"
             android:textSize="16sp"
             android:inputType="text"
+            android:text="admin"
             android:layout_marginBottom="16dp"/>
         <TextView
             android:id="@+id/tv_label_password"
@@ -49,6 +50,7 @@
             android:layout_height="wrap_content"
             android:hint="Ingrese su contraseña"
             android:textSize="16sp"
+            android:text="123456"
             android:inputType="text"/>
         <TextView
             android:id="@+id/tv_recuperar_contrasena"
