@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class TokenManager(private val context: Context) {
     companion object {
@@ -19,7 +20,7 @@ class TokenManager(private val context: Context) {
         private val KEY_NOMBRE_COMPLETO = stringPreferencesKey("nombre_completo")
         private val KEY_EXPIRA_EN = stringPreferencesKey("expira_en")
 
-        private val Context.datastorage: DataStore<Preferences> by preferencesDataStore(
+        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
             name = NOMBRE_DATASTORAGE
         )
     }
@@ -42,9 +43,15 @@ class TokenManager(private val context: Context) {
         }
     }
 
-    fun estaLogueado(): Flow<Boolean>{
-        return context.dataStore.data.map{ preferences->
+    fun estaLogueado(): Flow<Boolean> {
+        return context.dataStore.data.map { preferences ->
             preferences[KEY_TOKEN] != null
+        }
+    }
+
+    suspend fun limpiarSesion(){
+        context.dataStore.edit { preferences ->
+            preferences.clear()
         }
     }
 }

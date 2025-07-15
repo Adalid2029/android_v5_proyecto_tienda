@@ -10,17 +10,17 @@ data class Usuario(
     val nombreUsuario: String,
 
     @SerializedName("email")
-    val email: Int,
+    val email: String,
 
     @SerializedName("nombre_completo")
-    val nombreCompleto: Int,
+    val nombreCompleto: String,
 
     @SerializedName("telefono")
-    val telefono: Int,
+    val telefono: String?,
 
     @SerializedName("groups")
-    val grupos: Int,
+    val grupos: List<String>,
 
     @SerializedName("permissions")
-    val permisos: Int
+    val permisos: List<String>
 )
