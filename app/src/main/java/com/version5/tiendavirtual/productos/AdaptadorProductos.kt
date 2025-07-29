@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.version5.tiendavirtual.productos.modelos.Producto
 import com.version5.tiendavirtual.R
 
@@ -26,7 +28,8 @@ class AdaptadorProductos(
         parent: ViewGroup,
         viewType: Int
     ): ViewHolderProducto {
-        val vista = LayoutInflater.from(parent.context).inflate(R.layout.item_productos, parent, false)
+        val vista =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_productos, parent, false)
         return ViewHolderProducto(vista)
     }
 
@@ -39,7 +42,18 @@ class AdaptadorProductos(
         holder.tvNombreProducto.text = producto.nombre
         holder.tvPrecio.text = "Precio: ${producto.precio} Bs"
 
-        holder.ivImagenProducto.setImageResource(R.drawable.store_icon)
+        if (!producto.imagenUrl.isNullOrEmpty()) {
+            Glide.with(holder.itemView.context)
+                .load(producto.imagenUrl)
+                .placeholder(R.drawable.store_icon)
+                .error(R.drawable.store_icon)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .centerCrop()
+                .into(holder.ivImagenProducto)
+        } else {
+            holder.ivImagenProducto.setImageResource(R.drawable.store_icon)
+        }
+
         holder.btnComprar.setOnClickListener {
             alHacerClickEnComprar(producto)
         }
@@ -48,7 +62,8 @@ class AdaptadorProductos(
     override fun getItemCount(): Int {
         return listaProductos.size
     }
-    fun notificarCambios(){
+
+    fun notificarCambios() {
         notifyDataSetChanged()
     }
 }

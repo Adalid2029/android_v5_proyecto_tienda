@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 class TokenManager(private val context: Context) {
@@ -49,9 +50,29 @@ class TokenManager(private val context: Context) {
         }
     }
 
-    suspend fun limpiarSesion(){
+    suspend fun limpiarSesion() {
         context.dataStore.edit { preferences ->
             preferences.clear()
+        }
+    }
+
+    fun obtenerToken(): Flow<String?> {
+        return context.dataStore.data.map { preferences ->
+            preferences[KEY_TOKEN]
+        }
+    }
+
+    suspend fun obtenerTokenSincrono(): String? {
+        val token = context.dataStore.data.map { preferences ->
+            preferences[KEY_TOKEN]
+        }.first()
+
+        return if (token?.startsWith("Bearer ") == true) {
+            token
+        } else if (token != null) {
+            "Bearer $token"
+        } else {
+            null
         }
     }
 }
